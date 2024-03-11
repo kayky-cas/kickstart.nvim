@@ -536,9 +536,11 @@ require('lazy').setup({
         -- gopls = {},
         -- pyright = {},
         rust_analyzer = {
-          ['rust-analyzer'] = {
-            check = {
-              command = 'clippy',
+          settings = {
+            ['rust-analyzer'] = {
+              check = {
+                command = 'clippy',
+              },
             },
           },
         },
