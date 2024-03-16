@@ -533,7 +533,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         rust_analyzer = {
           settings = {
@@ -579,6 +579,7 @@ require('lazy').setup({
             },
           },
         },
+        slint_lsp = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -662,6 +663,23 @@ require('lazy').setup({
       --    for various frameworks/libraries/etc. but you will have to
       --    set up the ones that are useful for you.
       -- 'rafamadriz/friendly-snippets',
+
+      {
+        'zbirenbaum/copilot-cmp',
+        config = function()
+          require('copilot_cmp').setup()
+        end,
+        dependencies = {
+          {
+            'zbirenbaum/copilot.lua',
+            cmd = 'Copilot',
+            event = 'InsertEnter',
+            config = function()
+              require('copilot').setup {}
+            end,
+          },
+        },
+      },
     },
     config = function()
       -- See `:help cmp`
@@ -720,6 +738,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'copilot' },
         },
       }
     end,
